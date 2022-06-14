@@ -8,6 +8,7 @@ export function ApiStack({ stack, app }) {
   const api = new Api(stack, "Api", {
     defaults: {
       function: {
+        authorizer: "iam",
         permissions: [table],
         environment: {
           TABLE_NAME: table.tableName,
@@ -20,7 +21,7 @@ export function ApiStack({ stack, app }) {
       "GET /notes": "functions/list.main",
       "PUT /notes" : "functions/update.main",
       "DELETE /notes" : "functions/delete.main",
-      
+
     },
   });
 
